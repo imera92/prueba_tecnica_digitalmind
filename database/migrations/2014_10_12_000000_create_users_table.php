@@ -19,8 +19,8 @@ class CreateUsersTable extends Migration
             $table->string('segundo_nombre', 100);
             $table->string('primer_apellido', 100);
             $table->string('segundo_apellido', 100);
-            $table->unsignedBigInteger('departamento_id');
-            $table->unsignedBigInteger('cargo_id');
+            $table->unsignedBigInteger('departamento_id')->nullable();
+            $table->unsignedBigInteger('cargo_id')->nullable();
             $table->timestamps();
         });
     }
