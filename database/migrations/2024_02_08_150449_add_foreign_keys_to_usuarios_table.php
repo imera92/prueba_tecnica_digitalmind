@@ -27,8 +27,8 @@ class AddForeignKeysToUsuariosTable extends Migration
     public function down()
     {
         Schema::table('usuarios', function (Blueprint $table) {
-            $table->dropForeign('ususarios_departamento_id_foreign');
-            $table->dropForeign('ususarios_cargo_id_foreign');
+            $table->dropForeign('usuarios_departamento_id_foreign');
+            $table->dropForeign('usuarios_cargo_id_foreign');
         });
     }
 }
