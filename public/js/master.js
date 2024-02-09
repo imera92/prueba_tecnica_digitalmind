@@ -1,4 +1,6 @@
 $(function() {
+    const mensaje_error_general = 'Lo sentimos, hubo un problema al actualizar el usuario. Vuelva a intentarlo más tarde.';
+
     $('.btn-edit').on('click', function() {
         const usuario_id = $(this).attr('data-id');
         let usuario_dto;
@@ -37,16 +39,27 @@ $(function() {
                 'cargo_id': $('#edit-cargo').val()
             },
             dataType: 'json',
-            success: (response) => {
+            success: () => {
                 window.location.reload();
             },
             error: (response) => {
-                let mensaje_error = 'Lo sentimos, hubo un problema al actualizar el usuario. Vuelva a intentarlo más tarde.';
-                if (response.status === 422 || response.status === 404) {
-                    mensaje_error = response.responseJSON.error ? response.responseJSON.error : mensaje_error;
-                }
-                alert(mensaje_error);
+                alert(response.responseJSON.error || mensaje_error_general);
                 $('#editEmployeeModal').modal('hide');
+            }
+        });
+    });
+
+    $('.btn-delete').on('click', function() {
+        const usuario_id = $(this).attr('data-id');
+
+        $.ajax({
+            url: 'api/usuarios/' + usuario_id,
+            type: 'DELETE',
+            success: () => {
+                window.location.reload();
+            },
+            error: () => {
+                alert(mensaje_error_general);
             }
         });
     });
