@@ -18,7 +18,7 @@
                         <a id="add-user-modal-btn" href="#addUserModal" class="btn btn-success" data-toggle="modal">
                             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Añadir usuario
                         </a>
-					</div>
+                    </div>
                 </div>
             </div>
             @if($usuarios->count() > 0)
@@ -63,40 +63,53 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <form>
-                    <div class="modal-header">						
-                        <h4 class="modal-title">Add Employee</h4>
+                    <div class="modal-header">
+                        <h4 class="modal-title">Añadir Usuario</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     </div>
-                    <div class="modal-body">					
+                    <div class="modal-body">
                         <div class="form-group">
-                            <label>Name</label>
-                            <input type="text" class="form-control" required>
+                            <label>Email:</label>
+                            <input id="add-email" type="email" class="form-control" name="email" required>
                         </div>
                         <div class="form-group">
-                            <label>Email</label>
-                            <input type="email" class="form-control" required>
+                            <label>Primer nombre:</label>
+                            <input id="add-primer-nombre" type="text" class="form-control" name="primer_nombre" required>
                         </div>
                         <div class="form-group">
-                            <label>Address</label>
-                            <textarea class="form-control" required></textarea>
+                            <label>Segundo nombre:</label>
+                            <input id="add-segundo-nombre" type="text" class="form-control" name="segundo_nombre">
                         </div>
                         <div class="form-group">
-                            <label>Phone</label>
-                            <input type="text" class="form-control" required>
+                            <label>Primer apellido:</label>
+                            <input id="add-primer-apellido" type="text" class="form-control" name="primer_apellido" required>
                         </div>
                         <div class="form-group">
-                            <select class="form-control">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
+                            <label>Segundo apellido:</label>
+                            <input id="add-segundo-apellido" type="text" class="form-control" name="segundo_apellido">
+                        </div>
+                        <div class="form-group">
+                            <label>Departamento:</label>
+                            <select id="add-departamento" class="form-control" name="departamento_id" required>
+                                <option value="" disabled selected>Escoja una opcion</option>
+                                @foreach($departamentos as $departamento)
+                                    <option value="{{ $departamento->id }}">{{ $departamento->nombre }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Cargo:</label>
+                            <select id="add-cargo" class="form-control" name="cargo_id" required>
+                                <option value="" disabled selected>Escoja una opcion</option>
+                                @foreach($cargos as $cargo)
+                                    <option value="{{ $cargo->id }}">{{ $cargo->nombre }}</option>
+                                @endforeach
                             </select>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                        <input type="submit" class="btn btn-success" value="Add">
+                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
+                        <input type="submit" class="btn btn-info" value="Guardar">
                     </div>
                 </form>
             </div>
@@ -107,8 +120,8 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <form data-id="">
-                    <div class="modal-header">						
-                        <h4 class="modal-title">Edit Employee</h4>
+                    <div class="modal-header">
+                        <h4 class="modal-title">Editar Usuario</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     </div>
                     <div class="modal-body">
@@ -131,7 +144,7 @@
                         <div class="form-group">
                             <label>Segundo apellido:</label>
                             <input id="edit-segundo-apellido" type="text" class="form-control" name="segundo_apellido">
-                        </div>			
+                        </div>
                         <div class="form-group">
                             <label>Departamento:</label>
                             <select id="edit-departamento" class="form-control" name="departamento_id" required>
