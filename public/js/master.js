@@ -39,11 +39,17 @@ $(function() {
                 'cargo_id': $('#edit-cargo').val()
             },
             dataType: 'json',
+            beforeSend: () => {
+                $('#editUserModal form input[type=submit]').attr('disabled', true);
+            },
             success: () => {
                 window.location.reload();
             },
             error: (response) => {
                 alert(response.responseJSON.error || mensaje_error_general);
+            },
+            complete: () => {
+                $('#editUserModal form input[type=submit]').attr('disabled', false);
             }
         });
     });
@@ -64,11 +70,17 @@ $(function() {
                 'cargo_id': $('#add-cargo').val()
             },
             dataType: 'json',
+            beforeSend: () => {
+                $('#addUserModal form input[type=submit]').attr('disabled', true);
+            },
             success: () => {
                 window.location.reload();
             },
             error: (response) => {
                 alert(response.responseJSON.error || mensaje_error_general);
+            },
+            complete: () => {
+                $('#addUserModal form input[type=submit]').attr('disabled', false);
             }
         });
     });
