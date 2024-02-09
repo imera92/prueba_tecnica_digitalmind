@@ -41,6 +41,14 @@ class UsuariosController extends Controller
         if ($request->has($campos_obligatorios)) {
             $departamento = Departamento::find($request->input('departamento_id'));
             $cargo = Cargo::find($request->input('cargo_id'));
+            $usuario_existente = Usuario::where('email', $request->input('email'))->first();
+
+            if ($usuario_existente != null) {
+                return response([
+                    'error' => 'El correo especificado ya está en uso'
+                ], 422)
+                ->header('Content-Type', 'application/json');
+            }
 
             if ($departamento == null) {
                 return response([
