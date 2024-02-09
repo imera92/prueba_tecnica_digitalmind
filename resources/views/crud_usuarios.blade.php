@@ -2,6 +2,10 @@
 
 @section('title', 'Prueba Técnica - Administrador de Usuarios')
 
+@push('extra_styles')
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/crud_usuarios.css') }}">
+@endpush
+
 @section('content')
     <div class="container">
         <div class="table-wrapper">
@@ -10,6 +14,11 @@
                     <div class="col-sm-6">
                         <h2>Administracion de Usuarios</h2>
                     </div>
+                    <div class="col-sm-6">
+                        <a id="add-user-modal-btn" href="#addUserModal" class="btn btn-success" data-toggle="modal">
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Añadir usuario
+                        </a>
+					</div>
                 </div>
             </div>
             @if($usuarios->count() > 0)
@@ -32,7 +41,7 @@
                                 <td>{{ $usuario->departamento->nombre }}</td>
                                 <td>{{ $usuario->cargo->nombre }}</td>
                                 <td>
-                                    <a href="#editEmployeeModal" class="btn btn-default btn-edit" data-toggle="modal" data-id="{{ $usuario->id }}">
+                                    <a href="#editUserModal" class="btn btn-default btn-edit" data-toggle="modal" data-id="{{ $usuario->id }}">
                                         <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                                     </a>
                                     <button type="button" class="btn btn-default btn-delete" aria-label="Left Align" data-id="{{ $usuario->id }}">
@@ -50,7 +59,7 @@
         </div>
     </div>
     <!-- Modal Crear -->
-    <div id="addEmployeeModal" class="modal fade">
+    <div id="addUserModal" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
                 <form>
@@ -94,7 +103,7 @@
         </div>
     </div>
     <!-- Modal Edicion -->
-    <div id="editEmployeeModal" class="modal fade">
+    <div id="editUserModal" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
                 <form data-id="">
