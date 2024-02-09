@@ -142,6 +142,17 @@ class UsuariosController extends Controller
             }
         }
 
+        $input_email = $request->input('email');
+        if ($input_email && $usuario->email != $input_email) {
+            $usuario_existente = Usuario::where('email', $input_email)->first();
+            if ($usuario_existente != null) {
+                return response([
+                    'error' => 'El correo especificado ya está en uso'
+                ], 422)
+                ->header('Content-Type', 'application/json');
+            }
+        }
+
         $usuario->primer_nombre = $request->input('primer_nombre') ? $request->input('primer_nombre') : $usuario->primer_nombre;
         $usuario->segundo_nombre = $request->has('segundo_nombre') ? $request->input('segundo_nombre') : $usuario->segundo_nombre;
         $usuario->primer_apellido = $request->input('primer_apellido') ? $request->input('primer_apellido') : $usuario->primer_apellido;
