@@ -69,11 +69,11 @@
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
-                            <label>Email:</label>
+                            <label>Email: <span class="text-red">*</span></label>
                             <input id="add-email" type="email" class="form-control" name="email" required>
                         </div>
                         <div class="form-group">
-                            <label>Primer nombre:</label>
+                            <label>Primer nombre: <span class="text-red">*</span></label>
                             <input id="add-primer-nombre" type="text" class="form-control" name="primer_nombre" required>
                         </div>
                         <div class="form-group">
@@ -81,7 +81,7 @@
                             <input id="add-segundo-nombre" type="text" class="form-control" name="segundo_nombre">
                         </div>
                         <div class="form-group">
-                            <label>Primer apellido:</label>
+                            <label>Primer apellido: <span class="text-red">*</span></label>
                             <input id="add-primer-apellido" type="text" class="form-control" name="primer_apellido" required>
                         </div>
                         <div class="form-group">
@@ -89,7 +89,7 @@
                             <input id="add-segundo-apellido" type="text" class="form-control" name="segundo_apellido">
                         </div>
                         <div class="form-group">
-                            <label>Departamento:</label>
+                            <label>Departamento: <span class="text-red">*</span></label>
                             <select id="add-departamento" class="form-control" name="departamento_id" required>
                                 <option value="" disabled selected>Escoja una opcion</option>
                                 @foreach($departamentos as $departamento)
@@ -98,7 +98,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label>Cargo:</label>
+                            <label>Cargo: <span class="text-red">*</span></label>
                             <select id="add-cargo" class="form-control" name="cargo_id" required>
                                 <option value="" disabled selected>Escoja una opcion</option>
                                 @foreach($cargos as $cargo)
@@ -126,11 +126,11 @@
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
-                            <label>Email:</label>
+                            <label>Email: <span class="text-red">*</span></label>
                             <input id="edit-email" type="email" class="form-control" name="email" required>
                         </div>
                         <div class="form-group">
-                            <label>Primer nombre:</label>
+                            <label>Primer nombre: <span class="text-red">*</span></label>
                             <input id="edit-primer-nombre" type="text" class="form-control" name="primer_nombre" required>
                         </div>
                         <div class="form-group">
@@ -138,7 +138,7 @@
                             <input id="edit-segundo-nombre" type="text" class="form-control" name="segundo_nombre">
                         </div>
                         <div class="form-group">
-                            <label>Primer apellido:</label>
+                            <label>Primer apellido: <span class="text-red">*</span></label>
                             <input id="edit-primer-apellido" type="text" class="form-control" name="primer_apellido" required>
                         </div>
                         <div class="form-group">
@@ -146,7 +146,7 @@
                             <input id="edit-segundo-apellido" type="text" class="form-control" name="segundo_apellido">
                         </div>
                         <div class="form-group">
-                            <label>Departamento:</label>
+                            <label>Departamento: <span class="text-red">*</span></label>
                             <select id="edit-departamento" class="form-control" name="departamento_id" required>
                                 <option value="" disabled selected>Escoja una opcion</option>
                                 @foreach($departamentos as $departamento)
@@ -155,7 +155,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label>Cargo:</label>
+                            <label>Cargo: <span class="text-red">*</span></label>
                             <select id="edit-cargo" class="form-control" name="cargo_id" required>
                                 <option value="" disabled selected>Escoja una opcion</option>
                                 @foreach($cargos as $cargo)
