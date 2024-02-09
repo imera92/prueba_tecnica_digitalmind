@@ -11,7 +11,7 @@ $(function() {
             success: (response) => usuario_dto = response
         });
 
-        $('#editEmployeeModal form').attr('data-id', usuario_id);
+        $('#editUserModal form').attr('data-id', usuario_id);
         $('#edit-email').val(usuario_dto.email);
         $('#edit-primer-nombre').val(usuario_dto.primer_nombre);
         $('#edit-segundo-nombre').val(usuario_dto.segundo_nombre);
@@ -21,7 +21,7 @@ $(function() {
         $('#edit-cargo').val(usuario_dto.cargo_id);
     });
 
-    $('#editEmployeeModal form').on('submit', function(event) {
+    $('#editUserModal form').on('submit', function(event) {
         event.preventDefault();
         
         const usuario_id = $(this).attr('data-id');
@@ -44,7 +44,31 @@ $(function() {
             },
             error: (response) => {
                 alert(response.responseJSON.error || mensaje_error_general);
-                $('#editEmployeeModal').modal('hide');
+            }
+        });
+    });
+
+    $('#addUserModal form').on('submit', function(event) {
+        event.preventDefault();
+
+        $.ajax({
+            url: 'api/usuarios',
+            type: 'POST',
+            data: {
+                'email': $('#add-email').val(),
+                'primer_nombre': $('#add-primer-nombre').val(),
+                'segundo_nombre': $('#add-segundo-nombre').val(),
+                'primer_apellido': $('#add-primer-apellido').val(),
+                'segundo_apellido': $('#add-segundo-apellido').val(),
+                'departamento_id': $('#add-departamento').val(),
+                'cargo_id': $('#add-cargo').val()
+            },
+            dataType: 'json',
+            success: () => {
+                window.location.reload();
+            },
+            error: (response) => {
+                alert(response.responseJSON.error || mensaje_error_general);
             }
         });
     });
